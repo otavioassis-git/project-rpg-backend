@@ -23,6 +23,7 @@ async function login(req, res) {
           );
           res.send({
             success: true,
+            id: user.id,
             username: user.username,
             email: user.email,
             token,

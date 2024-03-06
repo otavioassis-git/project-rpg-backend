@@ -7,6 +7,7 @@ async function createUser(req, res) {
     const token = jwt.sign({ email: user.email }, process.env.LOGIN_TOKEN);
     res.send({
       success: true,
+      id: user.id,
       username: user.username,
       email: user.emal,
       token,
