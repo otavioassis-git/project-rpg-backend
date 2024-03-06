@@ -16,6 +16,7 @@ async function createUser(req, res) {
       res
         .status(400)
         .send({ success: false, error: "e-mail already registered" });
+    else res.status(400).send({ success: false, error });
   }
 }
 

@@ -2,7 +2,7 @@ var jwt = require("jsonwebtoken");
 
 function testToken(req, res) {
   if (!req.body.token) res.status(400).send("token was not sent");
-  if (!req.body.email) res.status(400).send("email was not sent");
+  else if (!req.body.email) res.status(400).send("email was not sent");
   else {
     const token = req.body.token;
     const email = req.body.email;
