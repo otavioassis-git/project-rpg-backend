@@ -7,9 +7,8 @@ module.exports = {
       "Users",
       [
         {
-          firstName: "Otávio",
-          lastName: "de Assis",
-          email: "otavio.assis@hotmail.com",
+          username: "Username",
+          email: "email@teste.com",
           password: "teste",
           createdAt: new Date(),
           updatedAt: new Date(),
