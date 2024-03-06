@@ -21,7 +21,12 @@ async function login(req, res) {
             { email: user.email },
             process.env.LOGIN_TOKEN
           );
-          res.send({ success: true, email: user.email, token });
+          res.send({
+            success: true,
+            username: user.username,
+            email: user.email,
+            token,
+          });
         }
       });
     }
