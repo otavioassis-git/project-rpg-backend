@@ -7,14 +7,13 @@ import {
   Model,
   PrimaryKey,
   Table,
-  Unique,
   UpdatedAt,
 } from 'sequelize-typescript';
-import { Image } from './image.model';
 import { UserImages } from './userImages.mode';
+import { User } from './user.model';
 
 @Table
-export class User extends Model {
+export class Image extends Model {
   @PrimaryKey
   @AllowNull(false)
   @AutoIncrement
@@ -23,20 +22,11 @@ export class User extends Model {
 
   @AllowNull(false)
   @Column
-  firstName: string;
+  name: string;
 
   @AllowNull(false)
   @Column
-  lastName: string;
-
-  @AllowNull(false)
-  @Unique(true)
-  @Column
-  username: string;
-
-  @AllowNull(false)
-  @Column
-  password: string;
+  value: string;
 
   @Column
   @CreatedAt
@@ -46,6 +36,6 @@ export class User extends Model {
   @UpdatedAt
   updatedAt: Date;
 
-  @BelongsToMany(() => Image, () => UserImages)
-  images: Image[];
+  @BelongsToMany(() => User, () => UserImages)
+  users: User[];
 }
