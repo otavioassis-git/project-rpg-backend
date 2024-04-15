@@ -28,7 +28,7 @@ export class AuthService {
     user: Optional<CreateUserDto, keyof CreateUserDto>,
   ): Promise<AuthResponse> {
     try {
-      user.password = bcrypt.hashSync(
+      user.password = await bcrypt.hashSync(
         user.password,
         parseInt(process.env.LOGIN_TOKEN),
       );
