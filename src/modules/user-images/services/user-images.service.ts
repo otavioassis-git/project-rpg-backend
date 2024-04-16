@@ -19,9 +19,16 @@ export class UserImagesService {
       },
     });
 
-    const images = await user.$get('images', {
-      attributes: ['name', 'value', 'id'],
-    });
+    const images = await user
+      .$get('images', {
+        attributes: ['name', 'value', 'id'],
+      })
+      .then((images: any) => {
+        for (let image of images) {
+          image.value = image.value.toString('base64');
+        }
+        return images;
+      });
 
     return images;
   }
@@ -31,15 +38,13 @@ export class UserImagesService {
     req,
   ): Promise<Image> {
     let image: Image;
-    try {
-      image = await this.imageModel.create(data);
-    } catch (error) {
-      image = await this.imageModel.findOne({
-        where: {
-          value: data.value,
-        },
-      });
-    }
+
+    image = await this.imageModel.findOne({
+      where: {
+        value: data.value,
+      },
+    });
+    if (!image) image = await this.imageModel.create(data);
 
     const user = await this.userModel.findOne({
       where: {
@@ -64,9 +69,9 @@ export class UserImagesService {
       },
     });
 
-    user.$remove('images', image);
     if ((await image.$count('users')) == 1) {
-      image.destroy();
-    }
+      await user.$remove('images', image);
+      await image.destroy();
+    } else await user.$remove('images', image);
   }
 }
