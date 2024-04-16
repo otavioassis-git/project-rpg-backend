@@ -19,14 +19,27 @@ export class UserImagesService {
       },
     });
 
-    return await user.$get('images');
+    const images = await user.$get('images', {
+      attributes: ['name', 'value', 'id'],
+    });
+
+    return images;
   }
 
   async uploadUserImage(
     data: Optional<UploadUserImageDto, keyof UploadUserImageDto>,
     req,
   ): Promise<Image> {
-    const image = await this.imageModel.create(data);
+    let image: Image;
+    try {
+      image = await this.imageModel.create(data);
+    } catch (error) {
+      image = await this.imageModel.findOne({
+        where: {
+          value: data.value,
+        },
+      });
+    }
 
     const user = await this.userModel.findOne({
       where: {
@@ -36,5 +49,24 @@ export class UserImagesService {
 
     await user.$add('images', image);
     return image;
+  }
+
+  async deleteUserImage(id: number, req) {
+    const image = await this.imageModel.findOne({
+      where: {
+        id,
+      },
+    });
+
+    const user = await this.userModel.findOne({
+      where: {
+        username: req.user.username,
+      },
+    });
+
+    user.$remove('images', image);
+    if ((await image.$count('users')) == 1) {
+      image.destroy();
+    }
   }
 }
