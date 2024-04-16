@@ -16,7 +16,8 @@ export class UserService {
     private userModel: typeof User,
   ) {}
 
-  async updatePassword(data: UpdatePasswordDto, req) {
+  // AJUSTAR O RETORNO
+  async updatePassword(data: UpdatePasswordDto, req): Promise<User> {
     try {
       const fUser = await this.userModel.findOne({
         where: {

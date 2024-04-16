@@ -7,8 +7,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { User } from './models/user.model';
 import { UserModule } from './modules/user/user.module';
 import { Image } from './models/image.model';
-import { UserImages } from './models/userImages.mode';
+import { UserImages } from './models/userImages.model';
 import { ImageModule } from './modules/image/image.module';
+import { UserImagesModule } from './modules/user-images/user-images.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ImageModule } from './modules/image/image.module';
     AuthModule,
     UserModule,
     ImageModule,
+    UserImagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

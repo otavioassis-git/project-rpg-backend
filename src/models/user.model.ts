@@ -11,7 +11,7 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript';
 import { Image } from './image.model';
-import { UserImages } from './userImages.mode';
+import { UserImages } from './userImages.model';
 
 @Table
 export class User extends Model {

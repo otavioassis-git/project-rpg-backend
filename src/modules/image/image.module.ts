@@ -6,10 +6,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from 'src/models/user.model';
 
 @Module({
-  imports: [
-    SequelizeModule.forFeature([Image]),
-    SequelizeModule.forFeature([User]),
-  ],
+  imports: [SequelizeModule.forFeature([Image])],
   controllers: [ImageController],
   providers: [ImageService],
 })

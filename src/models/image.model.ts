@@ -9,7 +9,7 @@ import {
   Table,
   UpdatedAt,
 } from 'sequelize-typescript';
-import { UserImages } from './userImages.mode';
+import { UserImages } from './userImages.model';
 import { User } from './user.model';
 
 @Table
