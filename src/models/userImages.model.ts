@@ -28,6 +28,10 @@ export class UserImages extends Model {
   @Column
   imageId: number;
 
+  @AllowNull(false)
+  @Column
+  imageName: string;
+
   @Column
   @CreatedAt
   createdAt: Date;

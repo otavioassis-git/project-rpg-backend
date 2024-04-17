@@ -4,6 +4,7 @@ import { Image } from 'src/models/image.model';
 import { User } from 'src/models/user.model';
 import { UploadUserImageDto } from '../dtos/uploadUserImageDto';
 import { Optional } from 'sequelize';
+import { UserImages } from 'src/models/userImages.model';
 
 @Injectable()
 export class UserImagesService {
@@ -21,11 +22,13 @@ export class UserImagesService {
 
     const images = await user
       .$get('images', {
-        attributes: ['name', 'value', 'id'],
+        attributes: ['value', 'id'],
       })
-      .then((images: any) => {
+      .then((images) => {
         for (let image of images) {
-          image.value = image.value.toString('base64');
+          image.dataValues.value = image.dataValues.value.toString('base64');
+          image.dataValues.name = image.dataValues.UserImages.imageName;
+          delete image.dataValues['UserImages'];
         }
         return images;
       });
@@ -44,7 +47,7 @@ export class UserImagesService {
         value: data.value,
       },
     });
-    if (!image) image = await this.imageModel.create(data);
+    if (!image) image = await this.imageModel.create({ value: data.value });
 
     const user = await this.userModel.findOne({
       where: {
@@ -52,7 +55,7 @@ export class UserImagesService {
       },
     });
 
-    await user.$add('images', image);
+    await user.$add('images', image, { through: { imageName: data.name } });
     return image;
   }
 

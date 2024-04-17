@@ -22,10 +22,6 @@ export class Image extends Model {
 
   @AllowNull(false)
   @Column
-  name: string;
-
-  @AllowNull(false)
-  @Column
   value: string;
 
   @Column
