@@ -1,4 +1,5 @@
 # Project RPG Backend
+
 ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
@@ -36,9 +37,13 @@ $ npx sequelize-cli db:migrate
 # development watch mode
 $ npm start
 
+# development watch and debug mode
+
+$ npm run start:debug
+
 # development
-$ npm run start:dev
+$ npm run dev
 
 # production mode
-$ npm run start:prod
+$ npm run prod
 ```
