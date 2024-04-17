@@ -11,6 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UploadUserImageDto } from '../dtos/uploadUserImageDto';
+import { LinkUserImageDto } from '../dtos/linkUserImageDto';
 
 @Controller('user/images')
 @UseGuards(AuthGuard)
@@ -25,6 +26,11 @@ export class UserImagesController {
   @Post()
   uploadUserImage(@Body() body: UploadUserImageDto, @Req() request) {
     return this.userImagesService.uploadUserImage(body, request);
+  }
+
+  @Post('/link')
+  linkUserImage(@Body() body: LinkUserImageDto, @Req() request) {
+    return this.userImagesService.linkUserImage(body, request);
   }
 
   @Delete(':id')
