@@ -38,7 +38,6 @@ $ npx sequelize-cli db:migrate
 $ npm start
 
 # development watch and debug mode
-
 $ npm run start:debug
 
 # development
