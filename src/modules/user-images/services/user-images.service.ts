@@ -5,6 +5,7 @@ import { User } from 'src/models/user.model';
 import { UploadUserImageDto } from '../dtos/uploadUserImageDto';
 import { Optional } from 'sequelize';
 import { UserImages } from 'src/models/userImages.model';
+import { LinkUserImageDto } from '../dtos/linkUserImageDto';
 
 @Injectable()
 export class UserImagesService {
@@ -48,6 +49,23 @@ export class UserImagesService {
       },
     });
     if (!image) image = await this.imageModel.create({ value: data.value });
+
+    const user = await this.userModel.findOne({
+      where: {
+        username: req.user.username,
+      },
+    });
+
+    await user.$add('images', image, { through: { imageName: data.name } });
+    return image;
+  }
+
+  async linkUserImage(data: LinkUserImageDto, req) {
+    const image = await this.imageModel.findOne({
+      where: {
+        id: data.id,
+      },
+    });
 
     const user = await this.userModel.findOne({
       where: {
