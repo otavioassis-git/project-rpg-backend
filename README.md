@@ -49,7 +49,7 @@ $ npm run prod
 
 ## How to host
 
-The frontend app will be pointed to http://project.rpg.backend:3000 so you can use the backend localy. Note that this is a private connection created and won't work with your app.
+The frontend app will be pointed to http://project.rpg.backend:3000 so you can use the backend localy. Note that this is a private connection created by me and won't work with your app.
 
 You have 2 options on how to use it:
 
@@ -61,7 +61,9 @@ Or you can set the DNS manually on windows following this steps:
 
 - Step 2 – Browse to and open the Host File c:\windows\system32\drivers\etc\hosts.file
 
-- Step 3 – Add in the required entry in the format of Ip Addresss > TAB > DNS Name. For example: 1.2.3.4 project.rpg.backend
+- Step 3 – Add in the required entry in the format of Ip Addresss > TAB > DNS Name.
+
+For example: ```127.0.0.1  project.rpg.backend```
 
 - Step 4 - Save the file
 
