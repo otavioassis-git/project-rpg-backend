@@ -7,11 +7,11 @@
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-## Description
+## 📝 Description
 
 Backend support for https://github.com/otavioassis-git/project-rpg
 
-## Installation
+## 🚀 Installation
 
 Run the following command to deploy the MySQL database to Docker, using docker-compose:
 
@@ -31,7 +31,7 @@ Then, using sequelize cli, run migrations:
 $ npx sequelize-cli db:migrate
 ```
 
-## Running the app
+## ⚙️ Running the app
 
 ```bash
 # development watch mode
@@ -47,7 +47,7 @@ $ npm run dev
 $ npm run prod
 ```
 
-## How to host
+## 🛜 How to host
 
 The frontend app will be pointed to http://project.rpg.backend:3000 so you can use the backend localy. Note that this is a private connection created by me and won't work with your app.
 
@@ -70,3 +70,11 @@ For example: ```127.0.0.1  project.rpg.backend```
 ### Suggestion on how to host locally
 
 You can use the Zerotier one app to create a virtual network and then send your IP to your friends. Don't forget to set the port to 3000.
+
+## 📧 Contact
+
+Otávio Fava Souza de Assis - otavio.assis@hotmail.com
+
+Project Link: [https://github.com/otavioassis-git/project-rpg-backend](https://github.com/otavioassis-git/project-rpg-backend)
+
+LinkedIn: [https://linkedin.com/in/otavio-assis](https://www.linkedin.com/in/otavio-assis/)
